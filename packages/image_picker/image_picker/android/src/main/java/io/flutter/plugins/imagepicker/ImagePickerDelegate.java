@@ -257,10 +257,18 @@ public class ImagePickerDelegate
       return;
     }
 
-    if (!permissionManager.isPermissionGranted(Manifest.permission.READ_EXTERNAL_STORAGE)) {
-      permissionManager.askForPermission(
-          Manifest.permission.READ_EXTERNAL_STORAGE, REQUEST_EXTERNAL_VIDEO_STORAGE_PERMISSION);
-      return;
+    if (Build.VERSION.SDK_INT < 33) {
+      if (!permissionManager.isPermissionGranted(Manifest.permission.READ_EXTERNAL_STORAGE)) {
+        permissionManager.askForPermission(
+                Manifest.permission.READ_EXTERNAL_STORAGE, REQUEST_EXTERNAL_IMAGE_STORAGE_PERMISSION);
+        return;
+      }
+    } else {
+      if (!permissionManager.isPermissionGranted("android.permission.READ_MEDIA_VIDEO")) {
+        permissionManager.askForPermission(
+                "android.permission.READ_MEDIA_VIDEO", REQUEST_EXTERNAL_IMAGE_STORAGE_PERMISSION);
+        return;
+      }
     }
 
     launchPickVideoFromGalleryIntent();
@@ -322,10 +330,18 @@ public class ImagePickerDelegate
       return;
     }
 
-    if (!permissionManager.isPermissionGranted(Manifest.permission.READ_EXTERNAL_STORAGE)) {
-      permissionManager.askForPermission(
-          Manifest.permission.READ_EXTERNAL_STORAGE, REQUEST_EXTERNAL_IMAGE_STORAGE_PERMISSION);
-      return;
+    if (Build.VERSION.SDK_INT < 33) {
+      if (!permissionManager.isPermissionGranted(Manifest.permission.READ_EXTERNAL_STORAGE)) {
+        permissionManager.askForPermission(
+                Manifest.permission.READ_EXTERNAL_STORAGE, REQUEST_EXTERNAL_IMAGE_STORAGE_PERMISSION);
+        return;
+      }
+    } else {
+      if (!permissionManager.isPermissionGranted("android.permission.READ_MEDIA_IMAGES")) {
+        permissionManager.askForPermission(
+                "android.permission.READ_MEDIA_IMAGES", REQUEST_EXTERNAL_IMAGE_STORAGE_PERMISSION);
+        return;
+      }
     }
 
     launchPickImageFromGalleryIntent();
