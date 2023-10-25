@@ -1,3 +1,22 @@
+# Flutter Legacy Plugins
+
+This repository is used to support some old codebases which require versions of flutter plugins that are no longer supported. Small ajustments are made to keep the plugins working with newer OS versions (for now).
+
+## image_picker
+
+The `image_picker` plugin is at version v0.6.7+22 and has been adjusted to support the new permissions required by Android 13 (`READ_MEDIA_VIDEO`, `READ_MEDIA_IMAGES`). 
+
+Use image_picker like this:
+```
+dependencies:
+  image_picker:
+    git: git@github.com:Siarl/flutter_legacy_plugins.git
+    ref: image_picker-v0.6.7+22-1
+    path: packages/image_picker/image_picker
+```
+
+---
+
 # Flutter plugins
 
 [![Build Status](https://api.cirrus-ci.com/github/flutter/plugins.svg)](https://cirrus-ci.com/github/flutter/plugins/master)
